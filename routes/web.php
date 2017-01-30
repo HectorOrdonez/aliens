@@ -13,4 +13,4 @@
 
 Route::get('/', 'HomeController@index');
 
-Route::resource('alien', 'AlienController');
+Route::resource('aliens', 'AlienController');

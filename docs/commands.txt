@@ -1,0 +1,3 @@
+# Migrate testing database
+# - This uses the .env.testing file to get which database use
+APP_ENV=testing php artisan migrate

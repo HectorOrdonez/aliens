@@ -2,11 +2,14 @@
 
 namespace Tests\Unit;
 
-use App\Alien;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
+use XCom\Alien\Entity\Alien;
 
 class AlienTest extends TestCase
 {
+    use DatabaseTransactions;
+
     /**
      * A basic test example.
      *
@@ -22,6 +25,7 @@ class AlienTest extends TestCase
     public function testSaveNewAlien()
     {
         $alien = new Alien();
+        $alien->setType(Alien::TYPE_SECTOID);
         $response = $alien->save();
 
         $this->assertTrue($response);
@@ -31,6 +35,7 @@ class AlienTest extends TestCase
     public function testByeAyy()
     {
         $alien = new Alien();
+        $alien->setType(Alien::TYPE_SECTOID);
         $alien->save();
 
         $id = $alien->id;

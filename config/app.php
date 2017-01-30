@@ -1,5 +1,7 @@
 <?php
 
+use XCom\Alien\AlienServiceProvider;
+
 return [
 
     /*
@@ -176,6 +178,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
+        AlienServiceProvider::class,
 
     ],
 
