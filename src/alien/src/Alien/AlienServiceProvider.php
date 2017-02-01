@@ -4,10 +4,16 @@ namespace XCom\Alien;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use XCom\Alien\Entity\Alien;
+use XCom\Alien\AlienRepositoryInterface;
 use XCom\Alien\Repository\AlienRepository;
 
 class AlienServiceProvider extends ServiceProvider
 {
+    public function boot()
+    {
+        require __DIR__ . '/../helper.php';
+    }
+
     public function register()
     {
         $this->app->bind(Alien::class, function () {

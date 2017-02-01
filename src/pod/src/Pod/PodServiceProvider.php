@@ -8,6 +8,11 @@ use XCom\Pod\Repository\PodRepository;
 
 class PodServiceProvider extends ServiceProvider
 {
+    public function boot()
+    {
+        require __DIR__ . '/../helper.php';
+    }
+
     public function register()
     {
         $this->app->bind(Pod::class, function () {

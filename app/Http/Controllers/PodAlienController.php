@@ -35,9 +35,9 @@ class PodAlienController extends Controller
 
     /**
      * @param AlienRepositoryInterface $alienRepository
-     * @param $id
+     * @param $podId
+     * @param $alienId
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     *
      * @todo Validate pod existance and belonging
      */
     public function destroy(AlienRepositoryInterface $alienRepository, $podId, $alienId)

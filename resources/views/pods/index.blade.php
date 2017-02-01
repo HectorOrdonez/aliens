@@ -49,5 +49,9 @@
 {!! Form::submit('Add Pod') !!}
 {!! Form::close() !!}
 
+
+@foreach (alien_types() as $type)
+    {{ $type }}
+@endforeach
 </body>
 </html>
