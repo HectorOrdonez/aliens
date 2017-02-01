@@ -3,6 +3,7 @@ namespace XCom\Alien\Repository;
 
 use XCom\Alien\AlienRepositoryInterface;
 use XCom\Alien\Entity\Alien;
+use XCom\Pod\Entity\Pod;
 
 class AlienRepository implements AlienRepositoryInterface
 {
@@ -19,29 +20,21 @@ class AlienRepository implements AlienRepositoryInterface
     }
 
     /**
-     * @inheritdoc
-     */
-    public function createSectoid()
-    {
-        return $this->create(['type' => Alien::TYPE_SECTOID]);
-    }
-
-    /**
-     * @param array $params
-     *
+     * @param Pod $pod
      * @return Alien
      */
-    private function create(array $params = [])
+    public function create(Pod $pod)
     {
+        $params = array_merge($this->alienDefaults(), ['pod_id' => $pod->id]);
+
         return $this->alienModel->create($params);
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function createFloater()
+    private function alienDefaults()
     {
-        return $this->create(['type' => Alien::TYPE_FLOATER]);
+        return [
+            'type' => Alien::TYPE_UNKNOWN,
+        ];
     }
 
     /**

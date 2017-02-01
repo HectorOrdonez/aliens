@@ -24,7 +24,7 @@ class CreateAlienRequest extends FormRequest
     public function rules()
     {
         return [
-            'type' => 'required|in:sectoid,floater'
+            'type' => 'in:sectoid,floater'
         ];
     }
 }

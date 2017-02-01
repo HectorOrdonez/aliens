@@ -1,6 +1,7 @@
 <?php
 namespace XCom\Pod\Repository;
 
+use XCom\Alien\Entity\Alien;
 use XCom\Pod\Entity\Pod;
 use XCom\Pod\PodRepositoryInterface;
 
@@ -33,7 +34,7 @@ class PodRepository implements PodRepositoryInterface
      */
     public function findAll()
     {
-        return $this->PodModel->get();
+        return $this->PodModel->with('aliens')->get();
     }
 
     public function findById($id)

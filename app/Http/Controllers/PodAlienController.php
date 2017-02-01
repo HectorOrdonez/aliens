@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateAlienRequest;
-use Illuminate\Http\Request;
-use XCom\Alien\Entity\Alien;
-use XCom\Alien\Entity\AlienRepositoryInterface;
+use XCom\Alien\AlienRepositoryInterface;
+use XCom\Pod\PodRepositoryInterface;
 
 class PodAlienController extends Controller
 {
@@ -14,38 +13,43 @@ class PodAlienController extends Controller
     const ERROR_ALIEN_TYPE_UNKNOWN = 'Alien type %s is unknown.';
     const ERROR_ALIEN_NOT_DESTROYED = 'The Alien with id %d could not be destroyed.';
 
-    public function index(AlienRepositoryInterface $alienRepository)
+    /**
+     * @param PodRepositoryInterface $podRepository
+     * @param AlienRepositoryInterface $alienRepository
+     * @param CreateAlienRequest $request
+     * @param $podId
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function store(
+        PodRepositoryInterface $podRepository,
+        AlienRepositoryInterface $alienRepository,
+        CreateAlienRequest $request,
+        $podId
+    )
     {
-        $aliens = $alienRepository->findAll();
+        $pod = $podRepository->findById($podId);
+        $alienRepository->create($pod);
 
-        return view('aliens.index', compact('aliens'));
+        return redirect(route('pods.index'));
     }
 
-    public function store(AlienRepositoryInterface $alienRepository, CreateAlienRequest $request)
+    /**
+     * @param AlienRepositoryInterface $alienRepository
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     *
+     * @todo Validate pod existance and belonging
+     */
+    public function destroy(AlienRepositoryInterface $alienRepository, $podId, $alienId)
     {
-        if ($request->get('type') === Alien::TYPE_SECTOID) {
-            $alienRepository->createSectoid();
-            flash(self::ALIEN_CREATED, 'success');
-        } elseif ($request->get('type') === Alien::TYPE_FLOATER) {
-            $alienRepository->createFloater();
-            flash(self::ALIEN_CREATED, 'success');
-        } else {
-            flash(sprintf(self::ERROR_ALIEN_TYPE_UNKNOWN, $request->get('type')), 'danger');
-        }
-
-        return redirect(route('aliens.index'));
-    }
-
-    public function destroy(AlienRepositoryInterface $alienRepository, $id)
-    {
-        $alien = $alienRepository->findById($id);
+        $alien = $alienRepository->findById($alienId);
 
         if (!$alien) {
-            flash(sprintf(self::ERROR_ALIEN_NOT_FOUND, $id), 'danger');
+            flash(sprintf(self::ERROR_ALIEN_NOT_FOUND, $alienId), 'danger');
         } else if (!$alienRepository->destroy($alien)) {
-            flash(sprintf(self::ERROR_ALIEN_NOT_DESTROYED, $id), 'danger');
+            flash(sprintf(self::ERROR_ALIEN_NOT_DESTROYED, $alienId), 'danger');
         }
 
-        return redirect(route('aliens.index'));
+        return redirect(route('pods.index'));
     }
 }

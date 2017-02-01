@@ -4,7 +4,6 @@ namespace XCom\Alien;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use XCom\Alien\Entity\Alien;
-use XCom\Alien\Entity\AlienRepositoryInterface;
 use XCom\Alien\Repository\AlienRepository;
 
 class AlienServiceProvider extends ServiceProvider

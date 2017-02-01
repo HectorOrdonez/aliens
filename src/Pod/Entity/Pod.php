@@ -2,6 +2,7 @@
 namespace XCom\Pod\Entity;
 
 use Illuminate\Database\Eloquent\Model;
+use XCom\Alien\Entity\Alien;
 
 /**
  * Class Pod
@@ -57,5 +58,10 @@ class Pod extends Model
     public function setType($type)
     {
         $this->type = (string) $type;
+    }
+
+    public function aliens()
+    {
+        return $this->hasMany(Alien::class);
     }
 }

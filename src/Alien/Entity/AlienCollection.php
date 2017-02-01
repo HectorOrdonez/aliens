@@ -1,7 +1,7 @@
 <?php
 namespace XCom\Alien\Entity;
 
-use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Collection;
 
 class AlienCollection extends Collection
 {

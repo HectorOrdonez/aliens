@@ -2,27 +2,15 @@
 namespace XCom\Alien;
 
 use XCom\Alien\Entity\Alien;
+use XCom\Pod\Entity\Pod;
 
 interface AlienRepositoryInterface
 {
     /**
-     * Returns all aliens
-     *
-     * @return Alien[]
-     */
-    public function findAll();
-
-    /**
-     * Creates an alien of type Sectoid
+     * Creates an alien
      * @return Alien
      */
-    public function createSectoid();
-
-    /**
-     * Creates an alien of type Floater
-     * @return Alien
-     */
-    public function createFloater();
+    public function create(Pod $pod);
 
     /**
      * Tries to find alien by id or returns false

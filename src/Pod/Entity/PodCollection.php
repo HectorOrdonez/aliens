@@ -1,7 +1,7 @@
 <?php
 namespace XCom\Pod\Entity;
 
-use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Collection;
 
 class PodCollection extends Collection
 {
