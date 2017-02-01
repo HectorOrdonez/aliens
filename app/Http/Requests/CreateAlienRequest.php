@@ -24,7 +24,7 @@ class CreateAlienRequest extends FormRequest
     public function rules()
     {
         return [
-            'type' => 'in:sectoid,floater'
+            'type' => 'in:' . implode(',', alien_types())
         ];
     }
 }

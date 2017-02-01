@@ -26,18 +26,30 @@
                     @forelse($pod->aliens as $alien)
 
                         {!! Form::open(['url' => route('pods.aliens.destroy', [$pod->id, $alien->id]), 'method'=>'delete']) !!}
-                        {!! Form::submit("Alien: $alien->id ") !!}
+                        {!! Form::submit("Alien: $alien->id of type $alien->type") !!}
                         {!! Form::close() !!}
                     @empty
                         No aliens
                     @endforelse
-
-                    {!! Form::open(['url' => route('pods.aliens.store', $pod->id)]) !!}
-                    {!! Form::submit('Add alien') !!}
-                    {!! Form::close() !!}
                 </div>
 
+                <div class="panel-footer">
+                    {!! Form::open(['url' => route('pods.aliens.store', $pod->id), 'class' => 'pull-left']) !!}
+                    {!! Form::submit('Add unknown alien') !!}
+                    {!! Form::close() !!}
 
+                    @foreach (alien_types() as $type)
+                        {!! Form::open(['url' => route('pods.aliens.store', $pod->id), 'class' => 'pull-left']) !!}
+                        {!! Form::hidden('type', $type) !!}
+                        {!! Form::submit("Add $type") !!}
+                        {!! Form::close() !!}
+                    @endforeach
+
+                    {!! Form::open(['url' => route('pods.aliens.store', $pod->id)]) !!}
+                    {!! Form::submit('Add floater') !!}
+                    {!! Form::close() !!}
+                </div>
+            </div>
             {!! Form::open(['url' => route('pods.destroy', $pod->id), 'method'=>'delete']) !!}
             {!! Form::submit('Destroy Me') !!}
             {!! Form::close() !!}
@@ -48,10 +60,5 @@
 {!! Form::open(['url' => route('pods.store')]) !!}
 {!! Form::submit('Add Pod') !!}
 {!! Form::close() !!}
-
-
-@foreach (alien_types() as $type)
-    {{ $type }}
-@endforeach
 </body>
 </html>

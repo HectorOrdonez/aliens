@@ -8,9 +8,11 @@ interface AlienRepositoryInterface
 {
     /**
      * Creates an alien
+     * @param Pod $pod
+     * @param array $params
      * @return Alien
      */
-    public function create(Pod $pod);
+    public function create(Pod $pod, array $params = []);
 
     /**
      * Tries to find alien by id or returns false

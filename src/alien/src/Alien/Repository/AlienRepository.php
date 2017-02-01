@@ -20,12 +20,15 @@ class AlienRepository implements AlienRepositoryInterface
     }
 
     /**
-     * @param Pod $pod
-     * @return Alien
+     * @inheritdoc
      */
-    public function create(Pod $pod)
+    public function create(Pod $pod, array $params = [])
     {
-        $params = array_merge($this->alienDefaults(), ['pod_id' => $pod->id]);
+        $params = array_merge(
+            $this->alienDefaults(),
+            $params,
+            ['pod_id' => $pod->id]
+        );
 
         return $this->alienModel->create($params);
     }

@@ -1,11 +1,11 @@
 <?php
 function alien_types()
 {
-    return collect([
+    return [
         'sectoid',
         'floater',
         'berserker',
         'exalt:rocketeer',
         'exalt:operative',
-    ]);
+    ];
 }

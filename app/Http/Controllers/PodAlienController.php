@@ -27,8 +27,11 @@ class PodAlienController extends Controller
         $podId
     )
     {
+        $params = [];
+        $params['type'] = $request->exists('type') ? $request->get('type') : 'unknown';
+
         $pod = $podRepository->findById($podId);
-        $alienRepository->create($pod);
+        $alienRepository->create($pod, $params);
 
         return redirect(route('pods.index'));
     }
