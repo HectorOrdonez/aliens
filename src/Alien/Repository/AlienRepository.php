@@ -1,8 +1,8 @@
 <?php
 namespace XCom\Alien\Repository;
 
+use XCom\Alien\AlienRepositoryInterface;
 use XCom\Alien\Entity\Alien;
-use XCom\Alien\Entity\AlienRepositoryInterface;
 
 class AlienRepository implements AlienRepositoryInterface
 {

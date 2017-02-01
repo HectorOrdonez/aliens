@@ -13,4 +13,5 @@
 
 Route::get('/', 'HomeController@index');
 
-Route::resource('aliens', 'AlienController');
+Route::resource('pods', 'PodController');
+Route::resource('pods.aliens', 'PodAlienController');

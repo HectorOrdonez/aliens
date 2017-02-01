@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use XCom\Alien\Entity\Alien;
 use XCom\Alien\Entity\AlienRepositoryInterface;
 
-class AlienController extends Controller
+class PodAlienController extends Controller
 {
     const ALIEN_CREATED = 'Alien created successfully';
     const ERROR_ALIEN_NOT_FOUND = 'The Alien with id %d could not be found.';
