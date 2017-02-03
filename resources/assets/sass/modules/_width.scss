@@ -1,0 +1,3 @@
+@mixin width ($width, $width_total) {
+	width: $width/$width_total*100%;
+}
