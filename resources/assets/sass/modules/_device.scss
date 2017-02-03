@@ -2,14 +2,20 @@ $mobile: 320px;
 $tablet: 480px;
 $desktop: 1000px;
 
-@mixin device ($media) {
-	@if $media == small-screens {
-		@media only screen and (max-width: $mobile) { @content; }
-	}
-	@else if $media == medium-screens {
-		@media only screen and (min-width: $tablet + 1) and (max-width: $break-large - 1) { @content; }
-	}
-	@else if $media == wide-screens {
-		@media only screen and (min-width: $desktop) { @content; }
-	}
-}
+// ???
+// Porque no va el mixin device? info: http://krasimirtsonev.com/blog/article/SASS-content-directive-is-a-wonderful-thing
+
+//@mixin device($media) {
+	//@if $media == small-screens {
+	//	@media only screen and (max-width: $mobile) { @content; }
+	//}
+	//@else if $media == medium-screens {
+	//	@media only screen and (min-width: $tablet + 1) and (max-width: $break-large - 1) { @content; }
+	//}
+	//@else if $media == wide-screens {
+	//	@media only screen and (min-width: $desktop) { @content; }
+	//}
+	//@media(min-width: 600px) {
+	//	width: 70%;
+	//}
+//}

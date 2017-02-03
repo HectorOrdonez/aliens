@@ -1,15 +1,35 @@
-<html>
-<head>
+{{--                           --}}
+{{--        L A Y O U T        --}}
+{{--                           --}}
+@extends('layouts.main')
 
-</head>
 
-<body>
 
-<h1>Hi</h1>
+{{--                           --}}
+{{--        H E A D E R        --}}
+{{--                           --}}
+@section('header')
+    @parent
+@endsection
 
-<h2>
-    <a href="{{ route('pods.index') }}">Battleground</a>
-</h2>
 
-</body>
-</html>
+
+{{--                           --}}
+{{--          M A I N          --}}
+{{--                           --}}
+@section('main')
+    @parent
+    <h1>Hi</h1>
+    <h2>
+        <a href="{{ route('pods.index') }}">Battleground</a>
+    </h2>
+@endsection
+
+
+
+{{--                           --}}
+{{--        F O O T E R        --}}
+{{--                           --}}
+@section('footer')
+    @parent
+@endsection

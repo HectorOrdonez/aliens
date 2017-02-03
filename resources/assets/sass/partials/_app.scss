@@ -1,0 +1,19 @@
+html {
+	background: url('http://www.wallpaperup.com/uploads/wallpapers/2013/10/29/167104/big_thumb_ff7c077e42cc006edada20eb41430b1e.jpg') no-repeat center center fixed;
+	background-size: cover;
+	width: 100%;
+	color: white;
+}
+
+body {
+	width: 100%;
+}
+
+main {
+	@extend %container;
+}
+
+form {
+	width: calc(100% - 10px);
+	margin: auto;
+}

@@ -2,11 +2,11 @@
 	margin: auto;
 	width: 100%;
 
-	@include device(tablet){
-		width: 90%
-	};
+	@media (min-width: $tablet){
+		width: 80%;
+	}
 
-	@include device(desktop){
+	@media (min-width: $desktop){
 		width: 70%;
 	};
 }
