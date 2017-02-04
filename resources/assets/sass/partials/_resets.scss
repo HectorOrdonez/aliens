@@ -48,5 +48,12 @@ table {
 }
 
 input {
+	cursor: pointer;
 	background-color: transparent;
+}
+
+button {
+	border: none;
+	background-color: transparent !important;
+	cursor: pointer;
 }

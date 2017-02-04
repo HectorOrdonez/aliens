@@ -40,9 +40,25 @@
 {{--                           --}}
 @section('main')
     @parent
-    {{--    @include('includes/flash')--}}
-    {{--    @include('includes/errors')--}}
+    {{--        @include('includes/flash')--}}
+    {{--        @include('includes/errors')--}}
+    {!! Form::open(['url' => route('pods.store')]) !!}
+    {!! Form::submit('Add Pod', ['class' => 'addpod_button']) !!}
+    {!! Form::close() !!}
+@endsection
 
+
+
+{{--                           --}}
+{{--        F O O T E R        --}}
+{{--                           --}}
+@section('footer')
+    @parent
+@endsection
+
+
+
+@section('info util')
     <ul class="pods">
         <li class="pods__overview">
             {!! Form::open(['url' => route('pods.store')]) !!}
@@ -77,14 +93,4 @@
         </li>
         <li class="pods__addpod">hello</li>
     </ul>
-
-@endsection
-
-
-
-{{--                           --}}
-{{--        F O O T E R        --}}
-{{--                           --}}
-@section('footer')
-    @parent
 @endsection
