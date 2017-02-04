@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreatePodRequest;
+use Illuminate\Http\Request;
+use XCom\Alien\AlienRepositoryInterface;
 use XCom\Pod\PodRepositoryInterface;
 
 class PodController extends Controller
@@ -19,12 +22,42 @@ class PodController extends Controller
         return view('pods.index', compact('pods'));
     }
 
-    public function store(PodRepositoryInterface $podRepository)
+    public function store(PodRepositoryInterface $podRepository, AlienRepositoryInterface $alienRepository, Request $request)
     {
-        $podRepository->create();
+        // @todo Validate pod is sent?
+        $rawPodData = $request->get('pod');
+        $podData = $this->sanitizePod($rawPodData);
+
+        $pod = $podRepository->create();
+        foreach ($podData as $alienType => $amount) {
+            for ($i = 0; $i < $amount; $i++) {
+                $alienRepository->create($pod, ['type' => $alienType]);
+            }
+        }
+
         flash(self::POD_CREATED, 'success');
 
         return redirect(route('pods.index'));
+    }
+
+    /**
+     * Receives an array of alien types and amounts. Some of these amounts might be 0, in which case they will
+     * be removed
+     *
+     * @param array $pod
+     * @return array
+     */
+    private function sanitizePod(array $pod)
+    {
+        $sanitizedPod = [];
+
+        foreach ($pod as $alienType => $amount) {
+            if ($amount > 0) {
+                $sanitizedPod[$alienType] = $amount;
+            }
+        }
+
+        return $sanitizedPod;
     }
 
     public function destroy(PodRepositoryInterface $podRepository, $id)
@@ -40,5 +73,10 @@ class PodController extends Controller
         }
 
         return redirect(route('pods.index'));
+    }
+
+    public function create()
+    {
+        return view('pods.create');
     }
 }

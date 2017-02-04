@@ -5,7 +5,7 @@ function alien_types()
         'sectoid',
         'floater',
         'berserker',
-        'exalt:rocketeer',
-        'exalt:operative',
+        'exalt_rocketeer',
+        'exalt_operative',
     ];
 }
