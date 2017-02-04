@@ -8,9 +8,9 @@
 </div>
 <nav style="font-size: 14px;">
     <ul>
-        <li><a href="#">link 1</a></li>
-        <li><a href="#">link 2</a></li>
-        <li><a href="#">link 3</a></li>
+        <li><a href="{{ route('pods.index') }}" class="menu_link">Battlefield</a></li>
+        {{--<li><a href="#">link 2</a></li>--}}
+        {{--<li><a href="#">link 3</a></li>--}}
     </ul>
 </nav>
 {{--<nav class="menu">--}}
