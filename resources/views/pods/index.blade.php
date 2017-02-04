@@ -42,9 +42,7 @@
     @parent
     {{--        @include('includes/flash')--}}
     {{--        @include('includes/errors')--}}
-    {!! Form::open(['url' => route('pods.store')]) !!}
-    {!! Form::submit('Add Pod', ['class' => 'addpod_button']) !!}
-    {!! Form::close() !!}
+    <a href="{{ route('pods.create') }}" class="addpod_button">Add Pod</a>
 @endsection
 
 
