@@ -11,7 +11,19 @@
     @show
 
     @section('css')
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+        <style>
+            input {
+                /*background-color: transparent;*/
+                /*color: white;*/
+            }
+            button {
+                border: none;
+                background-color: transparent !important;
+                cursor: pointer;
+            }
+        </style>
     @show
 </head>
 <body>
@@ -32,6 +44,13 @@
 
     @section('js')
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('.menu button').click(function(){
+                    $('nav').slideToggle();
+                });
+            });
+        </script>
     @show
 </footer>
 </body>

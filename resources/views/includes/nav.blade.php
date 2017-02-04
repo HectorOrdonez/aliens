@@ -1,11 +1,23 @@
 <div class="home">
-    <a class="home_logo" href="{{ route('home') }}">Logo</a>
+    <a class="home_logo" href="{{ route('home') }}">XCOM</a>
 </div>
-<nav class="menu">
-    <a href="{{ route('pods.index') }}" class="menu_link">
-        Battlefield
-    </a>
+<div class="menu">
+    <button>
+        <i class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+</div>
+<nav style="font-size: 14px;">
+    <ul>
+        <li><a href="#">link 1</a></li>
+        <li><a href="#">link 2</a></li>
+        <li><a href="#">link 3</a></li>
+    </ul>
 </nav>
-<div class="user">
-    <a href="#" class="user_login">Login</a>
-</div>
+{{--<nav class="menu">--}}
+{{--<a href="{{ route('pods.index') }}" class="menu_link">--}}
+{{--Battlefield--}}
+{{--</a>--}}
+{{--</nav>--}}
+{{--<div class="user">--}}
+{{--<a href="#" class="user_login">Login</a>--}}
+{{--</div>--}}
