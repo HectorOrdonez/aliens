@@ -43,6 +43,42 @@
     {{--        @include('includes/flash')--}}
     {{--        @include('includes/errors')--}}
     <a href="{{ route('pods.create') }}" class="addpod_button">Add Pod</a>
+
+    <ul class="pods">
+        <li class="pods__overview">
+            @foreach ($pods as $pod)
+                {{--{{ $pod->id }}--}}
+                <div class="pods__pod">
+                    @forelse($pod->aliens as $alien)
+                        <svg height="60px" width="60px">
+                            <defs>
+                                <pattern id="{{$alien->type}}_image" x="0%" y="0%" height="100%" width="100%" viewBox="0 0 512 512">
+                                    <image x="0%" y="0%" width="512" height="512" xlink:href="{{ get_alien_image($alien->type) }}"></image>
+                                </pattern>
+                            </defs>
+                            {{--Create {{$alien->type}}--}}
+                            <circle class="alien_add" id="add_{{$alien->type}}" fill="url('#{{$alien->type}}_image')" r="30" cx="50%" cy="50%" stroke-width="0" stroke="#000">hey</circle>
+                        </svg>
+                    @empty
+                    No aliens
+                    @endforelse
+                    {{--{!! Form::open(['url' => route('pods.aliens.store', $pod->id), 'class' => '']) !!}--}}
+                    {{--{!! Form::submit('Add alien', ['class' => '']) !!}--}}
+                    {{--{!! Form::close() !!}--}}
+{{----}}
+                    {{--@foreach (alien_types() as $type)--}}
+{{--                    {!! Form::open(['url' => route('pods.aliens.store', $pod->id), 'class' => 'pull-left']) !!}--}}
+{{--                    {!! Form::hidden('type', $type) !!}--}}
+{{--                    {!! Form::submit("Add $type") !!}--}}
+                    {{--{!! Form::close() !!}--}}
+                    {{--@endforeach--}}
+{{----}}
+                </div>
+                <hr />
+            @endforeach
+        </li>
+        <li class="pods__addpod">hello</li>
+    </ul>
 @endsection
 
 

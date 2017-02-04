@@ -103,6 +103,29 @@ header {
 	display: inline-block;
 }
 
+main h1 {
+	font-size: 28px;
+	color: black;
+	margin: 40px 0;
+}
+
+
+.aliens {
+	&__alien {
+		width: 33%;
+		text-align: center;
+		display: inline-block;
+		font-size: 14px;
+		color: black;
+	}
+}
+
+.alien {
+	&_add {
+		cursor: pointer;
+	}
+}
+
 //.pods {
 //	width: 100%;
 //	overflow: hidden;
