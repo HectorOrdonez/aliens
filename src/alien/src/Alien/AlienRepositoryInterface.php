@@ -29,4 +29,6 @@ interface AlienRepositoryInterface
      * @return boolean
      */
     public function destroy(Alien $alien);
+
+    public function update(Alien $alien, array $params);
 }

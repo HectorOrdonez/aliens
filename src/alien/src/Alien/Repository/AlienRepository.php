@@ -57,4 +57,15 @@ class AlienRepository implements AlienRepositoryInterface
     {
         return $alien->delete();
     }
+
+    public function update(Alien $alien, array $params)
+    {
+        if(isset($params['ammo']))
+        {
+            $alien->ammo = $params['ammo'];
+            $alien->save();
+        }
+
+        return true;
+    }
 }
