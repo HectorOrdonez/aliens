@@ -59,7 +59,6 @@
                                             <image x="0%" y="0%" width="512" height="512" xlink:href="{{ $alien->alien_type->image_link }}"></image>
                                         </pattern>
                                     </defs>
-                                    Create {{$alien->type}}
                                     <circle class="alien_add" id="add_{{$alien->type}}" fill="url('#{{$alien->type}}_image')" r="55" cx="50%" cy="50%" stroke-width="5" stroke="#65ECEF"></circle>
 
                                     <circle r="19" cx="80%" cy="80%" stroke-width="2.5" stroke="#65ECEF"></circle>

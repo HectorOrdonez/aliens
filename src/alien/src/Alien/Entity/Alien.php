@@ -33,4 +33,14 @@ class Alien extends Model
     {
         return $this->belongsTo(AlienType::class);
     }
+
+    public function type()
+    {
+        return $this->alien_type->name;
+    }
+
+    public function image_link()
+    {
+        return $this->alien_type->image_link
+    }
 }
