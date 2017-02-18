@@ -41,6 +41,6 @@ class Alien extends Model
 
     public function image_link()
     {
-        return $this->alien_type->image_link
+        return $this->alien_type->image_link;
     }
 }
