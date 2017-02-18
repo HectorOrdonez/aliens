@@ -49,6 +49,7 @@
                     <ul class="aliens">
                         @forelse($pod->aliens as $alien)
                             <li class="aliens__alien">
+                                <a href="{{ route('pods.aliens.edit', [$pod->id, $alien->id]) }}">
                                 <svg>
                                     <defs>
                                         <pattern id="{{ $alien->type() }}_image" x="0%" y="0%" height="100%" width="100%" viewBox="0 0 512 512">
@@ -67,6 +68,7 @@
                                         {{ $alien->ammo }}
                                     </text>
                                 </svg>
+                                </a>
                             </li>
                         @empty
                             No aliens

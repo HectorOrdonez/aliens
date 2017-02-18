@@ -68,6 +68,11 @@ class AlienRepository implements AlienRepositoryInterface
             $alien->save();
         }
 
+        if (isset($params['health'])) {
+            $alien->health = $params['health'];
+            $alien->save();
+        }
+
         return true;
     }
 }

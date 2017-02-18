@@ -68,10 +68,21 @@ class PodAlienController extends Controller
     public function update(AlienRepositoryInterface $alienRepository, $podId, $alienId, Request $request)
     {
         $alien = $alienRepository->findById($alienId);
-        $alienRepository->update($alien, ['ammo' => $request->get('ammo')]);
+        $alienRepository->update($alien, [
+            'ammo' => $request->get('ammo'),
+            'health' => $request->get('health'),
+        ]);
 
         flash(sprintf(self::ALIEN_UPDATED, $alienId), 'success');
 
         return redirect(route('pods.index'));
+    }
+
+    public function edit(PodRepositoryInterface $podRepository, AlienRepositoryInterface $alienRepository, $podId, $alienId)
+    {
+        $pod = $podRepository->findById($podId);
+        $alien = $alienRepository->findById($alienId);
+
+        return view('aliens.edit', compact('alien', 'pod'));
     }
 }
