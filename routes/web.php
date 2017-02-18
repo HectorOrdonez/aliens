@@ -15,3 +15,4 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('pods', 'PodController');
 Route::resource('pods.aliens', 'PodAlienController');
+Route::resource('alien_types', 'AlienTypeController');

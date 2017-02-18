@@ -26,6 +26,7 @@
         "psr-4": {
             "App\\": "app/",
             "XCom\\Alien\\": "src/alien/src/Alien",
+            "XCom\\AlienType\\": "src/alien_type/src/AlienType",
             "XCom\\Pod\\": "src/pod/src/Pod"
         }
     },

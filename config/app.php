@@ -182,6 +182,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         \Laracasts\Flash\FlashServiceProvider::class,
         AlienServiceProvider::class,
+        \XCom\AlienType\AlienTypeServiceProvider::class,
         PodServiceProvider::class,
 
     ],

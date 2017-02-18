@@ -11,7 +11,6 @@ class AlienServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        require __DIR__ . '/../helper.php';
     }
 
     public function register()
