@@ -51,5 +51,4 @@ function get_alien_image($alien_type)
     'mech_sectopod' => 'http://ufopaedia.org/images/b/b3/Sectopod_1_%28EU2012%29.png',
     'bio_ethereal' => 'http://ufopaedia.org/images/a/ab/Ethereal_%28EU2012%29.png',
     ][$alien_type];
-//    return $alienImages[$alien_type];
 }

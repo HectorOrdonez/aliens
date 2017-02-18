@@ -4,6 +4,7 @@ html {
 
 body {
 	width: 100%;
+	//background-color: black;
 	//background: url('http://www.wallpaperup.com/uploads/wallpapers/2013/10/29/167104/big_thumb_ff7c077e42cc006edada20eb41430b1e.jpg') no-repeat center center fixed;
 	//background-size: cover;
 }
@@ -25,10 +26,10 @@ nav {
 		text-align: center;
 		height: 5rem;
 		line-height: 5rem;
-		background-color: darkgrey;
+		//background-color: #000;
 
 		&:hover {
-			background-color: lightgrey;
+			//background-color: #222;
 		}
 	}
 }
@@ -67,6 +68,7 @@ header {
 		&_link {
 			font-size: 2rem;
 			@include link;
+			color: white !important;
 		}
 
 		& i {

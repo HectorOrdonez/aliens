@@ -6,12 +6,12 @@
 
 @section('main')
     @parent
-    <h1>Create new Pod</h1>
+    {{--<h1>Create new Pod</h1>--}}
 
     {!! Form::open(['url' => route('pods.store')]) !!}
     <ul class="aliens">
         @foreach(alien_types() as $type)
-            <li class="aliens__alien">
+            <li class="aliens__alien" style="padding:15px 0;">
                 <input id="input_{{$type}}" class="hello" type="hidden" name="pod[{{$type}}]" value="0">
                 <svg height="60px" width="60px">
                     <defs>
@@ -20,7 +20,7 @@
                         </pattern>
                     </defs>
                     {{--Create {{$type}}--}}
-                    <circle class="alien_add" id="add_{{$type}}" fill="url('#{{$type}}_image')" r="30" cx="50%" cy="50%" stroke-width="0" stroke="#000">hey</circle>
+                    <circle class="alien_add" id="add_{{$type}}" fill="url('#{{$type}}_image')" r="30" cx="50%" cy="50%" stroke-width="0.5" stroke="#FFF">hey</circle>
                 </svg>
             </li>
         @endforeach

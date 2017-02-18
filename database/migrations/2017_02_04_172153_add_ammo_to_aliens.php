@@ -14,7 +14,7 @@ class AddAmmoToAliens extends Migration
     public function up()
     {
         Schema::table('aliens', function (Blueprint $table) {
-            $table->integer('ammo')->unsigned();
+            $table->integer('ammo')->unsigned()->default(0);
         });
     }
 
