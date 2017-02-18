@@ -3,6 +3,7 @@ namespace XCom\Alien\Repository;
 
 use XCom\Alien\AlienRepositoryInterface;
 use XCom\Alien\Entity\Alien;
+use XCom\AlienType\Entity\AlienType;
 use XCom\Pod\Entity\Pod;
 
 class AlienRepository implements AlienRepositoryInterface
@@ -22,22 +23,24 @@ class AlienRepository implements AlienRepositoryInterface
     /**
      * @inheritdoc
      */
-    public function create(Pod $pod, array $params = [])
+    public function model()
     {
-        $params = array_merge(
-            $this->alienDefaults(),
-            $params,
-            ['pod_id' => $pod->id]
-        );
-
-        return $this->alienModel->create($params);
+        return $this->alienModel->newInstance();
     }
 
-    private function alienDefaults()
+    /**
+     * @inheritdoc
+     */
+    public function create(Pod $pod, AlienType $alienType)
     {
-        return [
-            'type' => Alien::TYPE_UNKNOWN,
-        ];
+        $alien = $this->model();
+        $alien->pod_id = $pod->id;
+        $alien->alien_type_id = $alienType->id;
+        $alien->health = $alienType->health;
+        $alien->ammo = $alienType->ammo;
+        $alien->save();
+
+        return $alien;
     }
 
     /**
@@ -60,8 +63,7 @@ class AlienRepository implements AlienRepositoryInterface
 
     public function update(Alien $alien, array $params)
     {
-        if(isset($params['ammo']))
-        {
+        if (isset($params['ammo'])) {
             $alien->ammo = $params['ammo'];
             $alien->save();
         }

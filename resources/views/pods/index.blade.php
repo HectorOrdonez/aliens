@@ -50,14 +50,13 @@
                 <div class="pods__pod">
                     <ul class="aliens">
                         @forelse($pod->aliens as $alien)
-
                             {{--{!! Form::open(['url' => route('pods.aliens.destroy', [$pod->id, $alien->id]), 'method'=>'delete']) !!}--}}
                             {{--<input type="submit">--}}
                             <li class="aliens__alien">
                                 <svg>
                                     <defs>
                                         <pattern id="{{$alien->type}}_image" x="0%" y="0%" height="100%" width="100%" viewBox="0 0 512 512">
-                                            <image x="0%" y="0%" width="512" height="512" xlink:href="{{ get_alien_image($alien->type) }}"></image>
+                                            <image x="0%" y="0%" width="512" height="512" xlink:href="{{ $alien->alien_type->image_link }}"></image>
                                         </pattern>
                                     </defs>
                                     Create {{$alien->type}}

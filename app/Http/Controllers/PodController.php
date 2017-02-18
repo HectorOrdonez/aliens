@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreatePodRequest;
 use Illuminate\Http\Request;
 use XCom\Alien\AlienRepositoryInterface;
+use XCom\AlienType\AlienTypeRepositoryInterface;
 use XCom\Pod\PodRepositoryInterface;
 
 class PodController extends Controller
@@ -22,16 +23,23 @@ class PodController extends Controller
         return view('pods.index', compact('pods'));
     }
 
-    public function store(PodRepositoryInterface $podRepository, AlienRepositoryInterface $alienRepository, Request $request)
+    public function store(
+        PodRepositoryInterface $podRepository,
+        AlienTypeRepositoryInterface $alienTypeRepository,
+        AlienRepositoryInterface $alienRepository,
+        Request $request)
     {
-        // @todo Validate pod is sent?
-        $rawPodData = $request->get('pod');
-        $podData = $this->sanitizePod($rawPodData);
+        // [id => amount]
+        $rawAlienTypes = $request->get('alien_types');
+
+        $alienTypes = $this->clearEmpties($rawAlienTypes);
 
         $pod = $podRepository->create();
-        foreach ($podData as $alienType => $amount) {
+
+        foreach ($alienTypes as $alienTypeId => $amount) {
+            $alienType = $alienTypeRepository->findById($alienTypeId);
             for ($i = 0; $i < $amount; $i++) {
-                $alienRepository->create($pod, ['type' => $alienType]);
+                $alienRepository->create($pod, $alienType);
             }
         }
 
@@ -44,20 +52,20 @@ class PodController extends Controller
      * Receives an array of alien types and amounts. Some of these amounts might be 0, in which case they will
      * be removed
      *
-     * @param array $pod
+     * @param array $rawAlienTypes
      * @return array
      */
-    private function sanitizePod(array $pod)
+    private function clearEmpties(array $rawAlienTypes)
     {
-        $sanitizedPod = [];
+        $sanitized = [];
 
-        foreach ($pod as $alienType => $amount) {
+        foreach ($rawAlienTypes as $alienTypeId => $amount) {
             if ($amount > 0) {
-                $sanitizedPod[$alienType] = $amount;
+                $sanitized[$alienTypeId] = $amount;
             }
         }
 
-        return $sanitizedPod;
+        return $sanitized;
     }
 
     public function destroy(PodRepositoryInterface $podRepository, $id)
@@ -75,8 +83,10 @@ class PodController extends Controller
         return redirect(route('pods.index'));
     }
 
-    public function create()
+    public function create(AlienTypeRepositoryInterface $alienTypeRepository)
     {
-        return view('pods.create');
+        $alienTypes = $alienTypeRepository->findAll();
+
+        return view('pods.create', compact('alienTypes'));
     }
 }

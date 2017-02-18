@@ -2,17 +2,26 @@
 namespace XCom\Alien;
 
 use XCom\Alien\Entity\Alien;
+use XCom\AlienType\Entity\AlienType;
 use XCom\Pod\Entity\Pod;
 
 interface AlienRepositoryInterface
 {
     /**
-     * Creates an alien
-     * @param Pod $pod
-     * @param array $params
+     * Gives an empty instance of an alien
+     *
      * @return Alien
      */
-    public function create(Pod $pod, array $params = []);
+    public function model();
+
+    /**
+     * Creates an alien for given pod based on given alien type
+     *
+     * @param Pod $pod
+     * @param AlienType $alienType
+     * @return Alien
+     */
+    public function create(Pod $pod, AlienType $alienType);
 
     /**
      * Tries to find alien by id or returns false

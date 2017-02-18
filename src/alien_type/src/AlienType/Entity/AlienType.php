@@ -2,6 +2,7 @@
 namespace XCom\AlienType\Entity;
 
 use Illuminate\Database\Eloquent\Model;
+use XCom\Alien\Entity\Alien;
 use XCom\Pod\Entity\Pod;
 
 /**
@@ -13,14 +14,6 @@ use XCom\Pod\Entity\Pod;
  */
 class AlienType extends Model
 {
-    const TYPE_SECTOID = 'sectoid';
-    const TYPE_FLOATER = 'floater';
-    const TYPE_UNKNOWN = 'unknown';
-
-    public $timestamps = false;
-
-    protected $fillable = ['type', 'pod_id'];
-
     /**
      * @inheritdoc
      */
@@ -29,40 +22,8 @@ class AlienType extends Model
         return new AlienTypeCollection($models);
     }
 
-    /**
-     * @return int
-     */
-    public function getId()
+    public function aliens()
     {
-        return (int) $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId($id)
-    {
-        $this->id = (int) $id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getType()
-    {
-        return (string) $this->type;
-    }
-
-    /**
-     * @param string $type
-     */
-    public function setType($type)
-    {
-        $this->type = (string) $type;
-    }
-
-    public function pod()
-    {
-        return $this->belongsTo(Pod::class);
+        return $this->hasMany(Alien::class);
     }
 }
