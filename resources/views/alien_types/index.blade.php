@@ -64,9 +64,15 @@
             <tr>
                 <td class="alien_type__id">{{ $alienType->id }}</td>
                 <td class="alien_type__name">{{ $alienType->name }}</td>
-                <td class="alien_type__image"><img src="{{$alienType->image_link}}" alt="{{$alienType->name}}" /></td>
+                <td class="alien_type__image"><img src="{{$alienType->image_link}}" alt="{{$alienType->name}}"/></td>
                 <td class="alien_type__health">{{ $alienType->health }}</td>
                 <td class="alien_type__ammo">{{ $alienType->ammo }}</td>
+                <td class="alien_type__actions">
+                    {!! link_to_route('alien_types.edit', 'Edit', $alienType->id) !!}
+                    {!! Form::open(['url' => route('alien_types.destroy', [$alienType->id]), 'method'=>'delete']) !!}
+                    {!! Form::submit('Destroy') !!}
+                    {!! Form::close() !!}
+                </td>
             </tr>
 
             {{--@forelse($pod->aliens as $alien)--}}
