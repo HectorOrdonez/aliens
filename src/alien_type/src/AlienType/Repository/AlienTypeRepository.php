@@ -12,11 +12,19 @@ class AlienTypeRepository implements AlienTypeRepositoryInterface
      *
      * @var AlienType
      */
-    protected $AlienTypeModel;
+    protected $alienTypeModel;
 
     public function __construct(AlienType $AlienType)
     {
-        $this->AlienTypeModel = $AlienType;
+        $this->alienTypeModel = $AlienType;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function model()
+    {
+        return $this->alienTypeModel->newInstance();
     }
 
     /**
@@ -24,7 +32,7 @@ class AlienTypeRepository implements AlienTypeRepositoryInterface
      */
     public function create(array $params = [])
     {
-        $alienType = $this->AlienTypeModel->newInstance();
+        $alienType = $this->model();
         $alienType->name = $params['name'];
         $alienType->image_link = $params['image_link'];
         $alienType->health = $params['health'];
@@ -39,12 +47,12 @@ class AlienTypeRepository implements AlienTypeRepositoryInterface
      */
     public function findAll()
     {
-        return $this->AlienTypeModel->get();
+        return $this->alienTypeModel->get();
     }
 
     public function findById($id)
     {
-        return ($AlienType = $this->AlienTypeModel->find($id)) ? $AlienType : false;
+        return ($AlienType = $this->alienTypeModel->find($id)) ? $AlienType : false;
     }
 
     public function destroy(AlienType $AlienType)

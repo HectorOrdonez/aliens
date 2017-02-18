@@ -18,9 +18,11 @@ class AlienTypeController extends Controller
         return view('alien_types.index', compact('alienTypes'));
     }
 
-    public function create()
+    public function create(AlienTypeRepositoryInterface $alienTypeRepository)
     {
-        return view('alien_types.create');
+        $alienType = $alienTypeRepository->model();
+
+        return view('alien_types.create', compact('alienType'));
     }
 
     public function store(AlienTypeRepositoryInterface $alienTypeRepository, Request $request)
@@ -35,6 +37,19 @@ class AlienTypeController extends Controller
         $alienTypeRepository->create($data);
 
         return redirect(route('alien_types.index'));
+    }
+
+    public function edit(AlienTypeRepositoryInterface $alienTypeRepository, $id)
+    {
+        $alienType = $alienTypeRepository->findById($id);
+
+        if (!$alienType) {
+            flash(sprintf(self::ERROR_ALIEN_TYPE_NOT_FOUND, $id), 'danger');
+
+            return redirect(route('alien_types.index'));
+        }
+
+        return view('alien_types.edit', compact('alienType'));
     }
 
     public function destroy(AlienTypeRepositoryInterface $alienTypeRepository, $id)

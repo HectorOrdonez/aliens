@@ -8,6 +8,13 @@ use XCom\Pod\Entity\Pod;
 interface AlienTypeRepositoryInterface
 {
     /**
+     * Returns an enmpty instance of AlienType
+     *
+     * @return AlienType
+     */
+    public function model();
+
+    /**
      * Creates an AlienType
      *
      * @param array $params

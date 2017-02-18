@@ -27,7 +27,7 @@
             padding: 2px;
         }
 
-        table td.alien_type__image {
+        table td.alien_type__image img {
             width: 100px;
             height: 100px;
         }

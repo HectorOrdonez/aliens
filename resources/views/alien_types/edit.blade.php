@@ -57,13 +57,12 @@
     @include('includes/errors')
 
     <div class="alien_types__create">
-        <h1>Create new Alien Type</h1>
+        <h1>Eit {{ $alienType->name }}</h1>
 
-        {!! Form::open(['url' => route('alien_types.store')]) !!}
+        {{ Form::open(['method' => 'PATCH', 'route' => ['alien_types.update', $alienType->id]]) }}
         @include('alien_types.partials._form')
         {!! Form::submit('Go') !!}
         {!! Form::close() !!}
-    </div>
 
     <div>{!! link_to_route('alien_types.index', 'Back')!!}</div>
 @endsection
