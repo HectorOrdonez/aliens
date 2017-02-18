@@ -61,7 +61,17 @@
                                         </pattern>
                                     </defs>
                                     Create {{$alien->type}}
-                                    <circle class="alien_add" id="add_{{$alien->type}}" fill="url('#{{$alien->type}}_image')" r="60" cx="50%" cy="50%" stroke-width="0" stroke="#000"></circle>
+                                    <circle class="alien_add" id="add_{{$alien->type}}" fill="url('#{{$alien->type}}_image')" r="55" cx="50%" cy="50%" stroke-width="5" stroke="#65ECEF"></circle>
+
+                                    <circle r="19" cx="80%" cy="80%" stroke-width="2.5" stroke="#65ECEF"></circle>
+                                    <text class="alien_counter" x="80%" y="80%" stroke="gold" stroke-width="1.5px" dy=".3em" text-anchor="middle">0</text>
+
+                                    <circle r="19" cx="20%" cy="20%" stroke-width="2.5" stroke="#65ECEF"></circle>
+                                    <text class="alien_counter" x="20%" y="20%" stroke="red" stroke-width="1.5px" dy=".3em" text-anchor="middle">
+                                        0
+                                    </text>
+                                    {{--<image xlink:href="firefox.jpg" x="0" y="0" height="50px" width="50px"/>--}}
+                                    {{--<image xlink:href="images/bullet.svg" x="50%" y="50%" height="50" widht="50" style="fill:red;"/>--}}
                                 </svg>
                             </li>
                             {{--</input>--}}

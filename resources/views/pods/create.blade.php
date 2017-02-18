@@ -20,9 +20,9 @@
                         </pattern>
                     </defs>
                     {{--Create {{$type}}--}}
-                    <circle class="alien_add" id="add_{{$type}}" fill="url('#{{$type}}_image')" r="60" cx="50%" cy="50%" stroke-width="0.5" stroke="#FFF">hey</circle>
-                    <circle r="15" cx="70%" cy="70%" stroke-width="1.5" stroke="#BBB"></circle>
-                    <text class ="alien_counter" x="70%" y="70%" stroke="#FFF" stroke-width="2px" dy=".3em" text-anchor="middle">0</text>
+                    <circle class="alien_add" id="add_{{$type}}" fill="url('#{{$type}}_image')" r="55" cx="50%" cy="50%" stroke-width="5" stroke="#65ECEF"></circle>
+                    <circle r="20" cx="80%" cy="80%" stroke-width="2.5" stroke="#65ECEF"></circle>
+                    <text class="alien_counter" x="80%" y="80%" stroke="#FFF" stroke-width="1.5px" dy=".3em" text-anchor="middle">0</text>
                 </svg>
             </li>
         @endforeach
