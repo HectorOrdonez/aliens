@@ -113,12 +113,20 @@ main h1 {
 
 
 .aliens {
+	text-align: center;
+
 	&__alien {
-		width: 33%;
+		min-width: 120px;
+		padding: 15px;
 		text-align: center;
 		display: inline-block;
 		font-size: 14px;
 		color: black;
+
+		& svg {
+			height: 120px;
+			width: 120px;
+		}
 	}
 }
 

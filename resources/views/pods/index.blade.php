@@ -47,42 +47,45 @@
     <ul class="pods">
         <li class="pods__overview">
             @foreach ($pods as $pod)
-                {{--{{ $pod->id }}--}}
                 <div class="pods__pod">
-                    @forelse($pod->aliens as $alien)
+                    <ul class="aliens">
+                        @forelse($pod->aliens as $alien)
 
-                        {!! Form::open(['url' => route('pods.aliens.destroy', [$pod->id, $alien->id]), 'method'=>'delete']) !!}
-                        <input type="submit">
-                            <svg height="60px" width="60px">
-                                <defs>
-                                    <pattern id="{{$alien->type}}_image" x="0%" y="0%" height="100%" width="100%" viewBox="0 0 512 512">
-                                        <image x="0%" y="0%" width="512" height="512" xlink:href="{{ get_alien_image($alien->type) }}"></image>
-                                    </pattern>
-                                </defs>
-                                {{--Create {{$alien->type}}--}}
-                                <circle class="alien_add" id="add_{{$alien->type}}" fill="url('#{{$alien->type}}_image')" r="30" cx="50%" cy="50%" stroke-width="0" stroke="#000">hey</circle>
-                            </svg>
-                        </input>
-                        {!! Form::close() !!}
+                            {{--{!! Form::open(['url' => route('pods.aliens.destroy', [$pod->id, $alien->id]), 'method'=>'delete']) !!}--}}
+                            {{--<input type="submit">--}}
+                            <li class="aliens__alien">
+                                <svg>
+                                    <defs>
+                                        <pattern id="{{$alien->type}}_image" x="0%" y="0%" height="100%" width="100%" viewBox="0 0 512 512">
+                                            <image x="0%" y="0%" width="512" height="512" xlink:href="{{ get_alien_image($alien->type) }}"></image>
+                                        </pattern>
+                                    </defs>
+                                    Create {{$alien->type}}
+                                    <circle class="alien_add" id="add_{{$alien->type}}" fill="url('#{{$alien->type}}_image')" r="60" cx="50%" cy="50%" stroke-width="0" stroke="#000"></circle>
+                                </svg>
+                            </li>
+                            {{--</input>--}}
+                            {{--{!! Form::close() !!}--}}
 
-                        {!! Form::open(['url' => route('pods.aliens.update', [$pod->id, $alien->id]), 'method'=>'put']) !!}
-                        <div>{!! Form::number('ammo', $alien->ammo) !!}</div>
-                        {!! Form::submit('Change ammo') !!}
-                        {!! Form::close() !!}
-                    @empty
-                    No aliens
-                    @endforelse
-                    {{--{!! Form::open(['url' => route('pods.aliens.store', $pod->id), 'class' => '']) !!}--}}
-                    {{--{!! Form::submit('Add alien', ['class' => '']) !!}--}}
-                    {{--{!! Form::close() !!}--}}
-{{----}}
-                    {{--@foreach (alien_types() as $type)--}}
-{{--                    {!! Form::open(['url' => route('pods.aliens.store', $pod->id), 'class' => 'pull-left']) !!}--}}
-{{--                    {!! Form::hidden('type', $type) !!}--}}
-{{--                    {!! Form::submit("Add $type") !!}--}}
-                    {{--{!! Form::close() !!}--}}
-                    {{--@endforeach--}}
-{{----}}
+                            {{--{!! Form::open(['url' => route('pods.aliens.update', [$pod->id, $alien->id]), 'method'=>'put']) !!}--}}
+                            {{--<div>{!! Form::number('ammo', $alien->ammo) !!}</div>--}}
+                            {{--{!! Form::submit('Change ammo') !!}--}}
+                            {{--{!! Form::close() !!}--}}
+                        @empty
+                            No aliens
+                        @endforelse
+                        {{--{!! Form::open(['url' => route('pods.aliens.store', $pod->id), 'class' => '']) !!}--}}
+                        {{--{!! Form::submit('Add alien', ['class' => '']) !!}--}}
+                        {{--{!! Form::close() !!}--}}
+                        {{----}}
+                        {{--@foreach (alien_types() as $type)--}}
+                        {{--                    {!! Form::open(['url' => route('pods.aliens.store', $pod->id), 'class' => 'pull-left']) !!}--}}
+                        {{--                    {!! Form::hidden('type', $type) !!}--}}
+                        {{--                    {!! Form::submit("Add $type") !!}--}}
+                        {{--{!! Form::close() !!}--}}
+                        {{--@endforeach--}}
+                        {{----}}
+                    </ul>
                 </div>
                 <hr />
             @endforeach
